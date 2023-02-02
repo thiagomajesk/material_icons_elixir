@@ -3,14 +3,11 @@ defmodule Mix.Tasks.Icons.Build do
 
   @shortdoc "Compiles and bundles the icon set"
 
-  @vsn Application.compile_env!(:material_icons, :version)
-  @styles Application.compile_env!(:material_icons, :styles)
-
   def run(_args) do
     Application.ensure_all_started(:floki)
 
     icons =
-      Enum.reduce(@styles, %{}, fn style, acc ->
+      Enum.reduce(Mix.Tasks.Icons.styles(), %{}, fn style, acc ->
         path = Path.join(["assets/icons", style, "*.svg"])
 
         Enum.reduce(Path.wildcard(path), acc, fn icon, acc ->
@@ -21,7 +18,7 @@ defmodule Mix.Tasks.Icons.Build do
     Mix.Generator.copy_template(
       "assets/material_icons.exs",
       "lib/material_icons.ex",
-      %{icons: icons, vsn: @vsn},
+      %{icons: icons, vsn: Mix.Tasks.Icons.vsn()},
       force: true
     )
 

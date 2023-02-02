@@ -4,8 +4,6 @@ defmodule Mix.Tasks.Icons.Update do
   @shortdoc "Updates the icon set via download from github"
 
   @cdn "https://codeload.github.com"
-  @vsn Application.compile_env!(:material_icons, :version)
-  @styles Application.compile_env!(:material_icons, :styles)
 
   require Logger
 
@@ -13,7 +11,7 @@ defmodule Mix.Tasks.Icons.Update do
   def run(_args) do
     Application.ensure_all_started(:httpoison)
 
-    url = "#{@cdn}/marella/material-design-icons/zip/refs/tags/v#{@vsn}"
+    url = "#{@cdn}/marella/material-design-icons/zip/refs/tags/v#{Mix.Tasks.Icons.vsn()}"
     tmp_dir = Path.join(System.tmp_dir!(), "material_icons")
 
     ensure_dir!(tmp_dir)
@@ -26,9 +24,9 @@ defmodule Mix.Tasks.Icons.Update do
   end
 
   defp copy_svg_files_from(tmp_dir) do
-    base_dir = Path.join([tmp_dir, "material-design-icons-#{@vsn}", "svg"])
+    base_dir = Path.join([tmp_dir, "material-design-icons-#{Mix.Tasks.Icons.vsn()}", "svg"])
 
-    Enum.each(@styles, fn style ->
+    Enum.each(Mix.Tasks.Icons.styles(), fn style ->
       dest_dir = Path.join("assets/icons", style)
 
       ensure_dir!(dest_dir)
