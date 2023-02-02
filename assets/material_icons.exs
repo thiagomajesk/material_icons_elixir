@@ -7,6 +7,7 @@ defmodule MaterialIcons do
 
   attr :rest, :global, default: %{width: "24", height: "24", viewBox: "0 0 24 24"}
   attr :style, :string, values: ~w(filled outlined round sharp two-tone), default: "filled"
+  attr :paths, :map, required: true
   slot :inner_block, required: true
   defp svg(assigns) do
    ~H"""

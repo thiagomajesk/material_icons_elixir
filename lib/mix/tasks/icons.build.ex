@@ -10,10 +10,10 @@ defmodule Mix.Tasks.Icons.Build do
     Application.ensure_all_started(:floki)
 
     icons =
-      Enum.flat_map(@styles, fn style ->
+      Enum.reduce(@styles, %{}, fn style, acc ->
         path = Path.join(["assets/icons", style, "*.svg"])
 
-        Enum.reduce(Path.wildcard(path), %{}, fn icon, acc ->
+        Enum.reduce(Path.wildcard(path), acc, fn icon, acc ->
           put_in(acc, [Access.key(function_name(icon), %{}), style], extract_svg_paths(icon))
         end)
       end)
