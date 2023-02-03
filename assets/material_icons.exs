@@ -21,6 +21,12 @@ defmodule MaterialIcons do
   <MaterialIcons.auto_awesome style="two-tone" size={42} />
   <MaterialIcons.auto_awesome style="two-tone" class="fill-green-500" />
   ```
+
+  > NOTE: Some icons from the material collection start with numbers.
+  > Because elixir doesn't allow function names that start with a number,
+  > we always add an underscore to the start of those component names.
+  > So, if you want to use an icon called `4k`, you should actually call it as `_4k`.
+
   """
 
   use Phoenix.Component

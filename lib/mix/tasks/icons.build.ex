@@ -43,6 +43,6 @@ defmodule Mix.Tasks.Icons.Build do
   end
 
   defp maybe_append_underscore(name) do
-    if name =~ ~r/\d+\w+$/, do: "_#{name}", else: name
+    if name =~ ~r/^\d+\w+$/, do: "_#{name}", else: name
   end
 end
