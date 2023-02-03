@@ -1,6 +1,26 @@
 defmodule MaterialIcons do
   @moduledoc """
-  Provides precompiled icon compiles from [material icons v0.14.2](https://fonts.google.com/icons).
+  Provides precompiled icons from [material icons v0.14.2](https://fonts.google.com/icons).
+
+  ## Usage
+
+  Material icons come in five styles: filled, outlined, round, sharp and two-tone.
+
+  By default, the icon components will use the filled style, but the style attribute
+  may be passed to select styling, for example:
+
+   ```heex
+  <MaterialIcons.auto_awesome/>
+  <MaterialIcons.auto_awesome style="outlined" />
+  <MaterialIcons.auto_awesome style="two-tone" />
+  ```
+
+  You can also pass the size and class attributes to the components:
+
+  ```heex
+  <MaterialIcons.auto_awesome style="two-tone" size={42} />
+  <MaterialIcons.auto_awesome style="two-tone" class="fill-green-500" />
+  ```
   """
 
   use Phoenix.Component
