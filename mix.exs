@@ -22,8 +22,8 @@ defmodule MaterialIcons.MixProject do
   defp deps do
     [
       {:phoenix_live_view, "~> 0.18.11"},
-      {:httpoison, "~> 2.0", only: :dev},
-      {:floki, "~> 0.34.0", only: :dev}
+      {:httpoison, "~> 2.0", only: [:dev, :test]},
+      {:floki, "~> 0.34.0", only: [:dev, :test]}
     ]
   end
 end

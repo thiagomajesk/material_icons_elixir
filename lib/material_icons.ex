@@ -7,11 +7,12 @@ defmodule MaterialIcons do
 
   attr :style, :string, values: ~w(filled outlined round sharp two-tone), default: "filled"
   attr :size, :integer, default: 24
-  slot(:inner_block, required: true)
   attr :paths, :map, required: true
-  attr :class, :string, default: ""
+  attr :class, :string, default: nil
 
   defp svg(assigns) do
+    # TODO: Check why Phoenix is not throwing when attr has 'values' option and you pass invalid values.
+    # TODO: Check why Phoenix is not throwing when attr has 'required' option and you don't pass values.
     content =
       case assigns.paths[assigns.style] do
         nil -> raise RuntimeError, "icon does not have the following style: #{assigns.style}"
