@@ -8,7 +8,7 @@ defmodule MaterialIcons.MixProject do
     [
       app: :material_icons,
       version: @version,
-      elixir: "~> 1.14",
+      elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       description: description(),
       package: package(),
@@ -55,10 +55,10 @@ defmodule MaterialIcons.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:phoenix_live_view, "~> 0.18.11"},
+      {:phoenix_live_view, ">= 0.18.0"},
       {:httpoison, "~> 2.0", only: [:dev, :test]},
-      {:floki, "~> 0.34.0", only: [:dev, :test]},
-      {:ex_doc, "~> 0.29", only: :dev, runtime: false}
+      {:floki, "~> 0.37.0", only: [:dev, :test]},
+      {:ex_doc, "~> 0.37", only: :dev, runtime: false}
     ]
   end
 end
