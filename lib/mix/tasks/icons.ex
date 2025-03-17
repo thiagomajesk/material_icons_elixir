@@ -3,7 +3,7 @@ defmodule Mix.Tasks.Icons do
 
   @shortdoc "Prints Material Icons help information"
 
-  @default_vsn "0.14.2"
+  @default_vsn "0.14.15"
   @default_styles ~w(filled outlined round sharp two-tone)
 
   @vsn Application.compile_env(:material_icons, :version, @default_vsn)
